@@ -5,7 +5,7 @@ set -e
 
 # 1. Install dependencies
 apt update
-apt install -y git python3 python3-venv python3-pip redis nginx wireguard
+apt install -y git python3 python3-venv python3-pip python3-yaml redis nginx wireguard
 
 # 2. Create a dedicated user
 id searxng &>/dev/null || useradd -m -s /bin/bash searxng
