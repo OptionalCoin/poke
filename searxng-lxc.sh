@@ -48,11 +48,14 @@ fi
 lxc-attach -n "$CONTAINER_NAME" -- bash << 'EOF'
 set -e
 
-# Update system
-apt update && apt upgrade -y
+echo "Installing wget and updating system..."
+# Install wget first, then update system
+apt update
+apt install -y wget
+apt upgrade -y
 
 # Install required packages
-apt install -y curl wget git python3 python3-pip python3-venv nginx supervisor wireguard-tools iptables
+apt install -y curl git python3 python3-pip python3-venv nginx supervisor wireguard-tools iptables
 
 # Create searxng user
 useradd -r -s /bin/false -d /var/lib/searxng searxng || true
